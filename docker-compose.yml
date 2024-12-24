@@ -1,0 +1,18 @@
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+services:
+  umiocr:
+    build:
+      context: ./
+    environment:
+      - HEADLESS=true
+    ports:
+      - "1224:1224"
+    networks:
+      - frontend
+      - backend
+    restart: unless-stopped
